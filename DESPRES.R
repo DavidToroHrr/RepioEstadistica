@@ -68,7 +68,7 @@ bptest(Modelosimple,studentize = FALSE)#P-valor<alfa rechazho Ho, las varianzas 
 
 
 
-#Hacemos la estadística descriptiva
+#Hacemos la estadística descriptiva con la circunferencia de cintura
 
 summary(X1)
 var(X1)
@@ -81,7 +81,7 @@ boxplot(X1,
         ylab = "Circunferencia (cm)", 
         horizontal = TRUE)
 
-# Agregar línea con la media (opcional)
+# Agregar línea con la media
 abline(v = mean(X1), col = "red", lty = 2)
 
 
