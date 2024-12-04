@@ -6,21 +6,25 @@ Y2C=DATOS$weight
 #Generar el modelo
 TablamC=data.frame(Y2C,X1C,X2C,X3C)
 cor(TablamC)#me arroja la matriz de correlación.Queremos ver la fuerza de cada una de las variables
-plot(TablamC)#es el diagrama de dispersión variable a variablle. Debemos indentificar entre las y y las x que sean lineales
+plot(TablamC)#es el diagrama de dispersión variable a variable. Debemos indentificar entre las y y las x que sean lineales
 #y entre independientes que no tengan NINGUNA FORMA
 
 
 #con el diagrama de dispersión variable a variable y con la matriz de correlación nos podemos dar cuenta de que la única variable  que 
-#nos sirve para hacer nustro análisis, ya que en la gráfica Y2 y X1C muestran una línea recta y en la matriz vemos que la fuerza de 
-#correlación es fuerte
+#nos sirve para hacer nustro análisis, ya que en la gráfica Y2C y X1C muestran una línea recta y en la matriz vemos que la fuerza de 
+#correlación es fuerte.
 
 
 #PROCEDEMOS A REALIZAR UNA REGRESIÓN MULTIPLE
+
+
+Modelomultiple=lm(Y2C~X1C+X2C+X3C)#corresponde a los coeficientes del modelo de la línea recta
 
 summary(Modelomultiple)#nos saca los residuales y no los interpretamos
 #nos arroja los coeficientes
 #r cuadrado
 #p-valor...para la prueba de hipótesis de linealidad
+
 
 plot(Modelomultiple)#heterrosedástico porque se observa un embudo
 abline(Modelomultiple)#arroja la línea
@@ -41,7 +45,7 @@ Errorm=residuals(Modelomultiple)
 
 install.packages("nortest")
 library("nortest")
-lillie.test(Errorm)#en este caso no aplica para nuestra base de datos por el número de datos. HACEMOS LA COMPARACIÓN CON EL P-VALOR DE NUEVO
+lillie.test(Errorm)#en este caso aplica para nuestra base de datos por el número de datos. HACEMOS LA COMPARACIÓN CON EL P-VALOR DE NUEVO
 
 
 #Validación de homosedasticidad
