@@ -24,6 +24,7 @@ plot(Modelosimple)#evidenciamos que no es el mejor ajuste (el lineal)
 # Ajustar el modelo polinómico 
 Modelopol <- lm(Y ~ X + I(X^2))  #incluye X y X^2 
 
+
 # Resumen del modelo para ver los coeficientes
 summary(Modelopol)
 
@@ -37,7 +38,7 @@ plot(Modelopol) # Solamente analizamos los primeros dos gráficos, ya está mejo
 # Comprobación de normalidad de los residuos
 hist(residuals(Modelopol), main="Histograma de los residuos", col="lightblue")
 
-
+Error=residuals(Modelopol) #residual o error
 #Normalidad de los residuos Kolmogorov
 install.packages("nortest")
 library(nortest)
@@ -46,4 +47,4 @@ lillie.test(Error)  # Prueba de Kolmogorov para normalidad
 #Homocedasticidad de los residuos Breusch Pagan
 install.packages("lmtest")
 library(lmtest)
-bptest(Modelosimple, studentize=FALSE)  # Prueba de Breusch Pagan para homocedasticidad
+bptest(Modelopol, studentize=FALSE)  # Prueba de Breusch Pagan para homocedasticidad
